@@ -141,9 +141,7 @@ func (f *TextField) SetHidden(hidden bool) {
 // ColumnType implements [Field.ColumnType] interface method.
 func (f *TextField) ColumnType(app App) string {
 	if f.PrimaryKey {
-		// note: the default is just a last resort fallback to avoid empty
-		// string values in case the record was inserted with raw sql and
-		// it is not actually used when operating with the db abstraction
+		// note: changing this from randomblob so we can write to collections from duckdb
 		return "TEXT PRIMARY KEY NOT NULL"
 	}
 
